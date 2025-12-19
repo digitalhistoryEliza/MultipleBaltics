@@ -1,0 +1,23 @@
+# Build artifacts
+*.min.js.map
+*.min.css.map
+
+# Temporary files
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node modules (if added in the future)
+node_modules/
+
+# Optimization temporary files
+/tmp/
+.cache/
