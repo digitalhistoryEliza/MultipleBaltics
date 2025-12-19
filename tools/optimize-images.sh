@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Image Optimization Helper Script
 # This script demonstrates how to optimize images for the Multiple Baltics website
 # Usage: ./optimize-images.sh [input_directory] [output_directory]
@@ -21,6 +21,7 @@ echo "Optimizing images from $INPUT_DIR to $OUTPUT_DIR"
 echo "================================================"
 
 # Process JPG files
+shopt -s nullglob  # Handle case when no files match
 for img in "$INPUT_DIR"/*.jpg "$INPUT_DIR"/*.jpeg; do
     if [ -f "$img" ]; then
         filename=$(basename "$img")
@@ -46,6 +47,7 @@ for img in "$INPUT_DIR"/*.jpg "$INPUT_DIR"/*.jpeg; do
 done
 
 # Process PNG files
+shopt -s nullglob  # Handle case when no files match
 for img in "$INPUT_DIR"/*.png; do
     if [ -f "$img" ]; then
         filename=$(basename "$img")
