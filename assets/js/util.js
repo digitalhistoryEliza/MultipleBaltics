@@ -391,12 +391,16 @@
 					else
 						x.hide();
 
+					// Cache parent and name for better performance
+					var iParent = i.parent();
+					var iName = i.attr('name');
+
 					i
 						.on('blur', function(event) {
 
 							event.preventDefault();
 
-							var x = i.parent().find('input[name=' + i.attr('name') + '-polyfill-field]');
+							var x = iParent.find('input[name=' + iName + '-polyfill-field]');
 
 							if (i.val() == '') {
 
@@ -407,12 +411,16 @@
 
 						});
 
+					// Cache parent and name for better performance
+					var xParent = x.parent();
+					var xName = x.attr('name').replace('-polyfill-field', '');
+
 					x
 						.on('focus', function(event) {
 
 							event.preventDefault();
 
-							var i = x.parent().find('input[name=' + x.attr('name').replace('-polyfill-field', '') + ']');
+							var i = xParent.find('input[name=' + xName + ']');
 
 							x.hide();
 
@@ -476,7 +484,9 @@
 								case 'password':
 									i.val(i.attr('defaultValue'));
 
-									x = i.parent().find('input[name=' + i.attr('name') + '-polyfill-field]');
+									// Cache name to avoid repeated attr() calls
+									var fieldName = i.attr('name');
+									x = i.parent().find('input[name=' + fieldName + '-polyfill-field]');
 
 									if (i.val() == '') {
 										i.hide();

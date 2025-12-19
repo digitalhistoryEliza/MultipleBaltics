@@ -35,10 +35,14 @@
 	// Nav.
 
 		// Title Bar.
+			// Cache selectors for better performance
+			var $logo = $('#logo h1');
+			var $nav = $('#nav');
+
 			$(
 				'<div id="titleBar">' +
 					'<a href="#navPanel" class="toggle"></a>' +
-					'<span class="title">' + $('#logo h1').html() + '</span>' +
+					'<span class="title">' + $logo.html() + '</span>' +
 				'</div>'
 			)
 				.appendTo($body);
@@ -47,7 +51,7 @@
 			$(
 				'<div id="navPanel">' +
 					'<nav>' +
-						$('#nav').navList() +
+						$nav.navList() +
 					'</nav>' +
 				'</div>'
 			)
